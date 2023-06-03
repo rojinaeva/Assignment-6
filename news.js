@@ -35,14 +35,51 @@ const displayNewsCategories=(categories)=>{
     newsDiv.classList.add('card');
     newsDiv.innerHTML=`
     <div class="row">
-     <div class="col-md-3">
-     <img src="${cat.thumbnail_url}" class="img-fluid rounded-start" alt="...">
+     <div class="col-md-3" id="thumbnail-style">
+     <img src="${cat.thumbnail_url}" class="img-fluid rounded-start" alt="">
    </div>
    <div class="col-md-9">
      <div class="card-body">
        <h5 class="card-title">${cat.title}</h5>
-       <p class="card-text">${cat.details.slice(0,250)}</p>
-       <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+       <div>
+       <p class="card-text ">${cat.details.slice(0,500)}</p>
+       </div>
+       <div class="row card-foter">
+          <div class="col">
+            <div class="author-identity">
+              <img class="img-fluid rounded-circle" style="width:25%" src="${cat.author.img}">
+
+            <div>
+              <span>${cat.author.name?cat.author.name:'no data found'}</span>
+              <span>${cat.author.published_date.slice(0,10)}</span>
+            </div>
+           </div>
+          </div>
+          <div class="col">
+             <div class="author-identity">
+               <span><i class="fa-regular fa-eye"></i></span>
+               <span>${cat.total_view}</span>
+             </div>
+          </div>
+          <div class="col">
+          <div class="class="author-identity">
+            <span><i class="fa-solid fa-star-half-stroke"></i></span>
+            <span><i class="fa-regular fa-star"></i></span>
+            <span><i class="fa-regular fa-star"></i></span>
+            <span> <i class="fa-regular fa-star"></i></span>
+            <span><i class="fa-regular fa-star"></i></span>
+          </div>
+          </div>
+          <div class="col">
+          <div class="author-identity">
+              <button onclick="loadNewsDetails('${cat._id
+              }')" type="button" class="btn btn-primary">Details
+              </button> 
+        
+          </div>
+          </div>
+  </div>
+       
      </div>
    </div>
   </div>
@@ -52,6 +89,18 @@ const displayNewsCategories=(categories)=>{
    }
  }
 
+const loadNewsDetails=(news_id)=>{
+const url=`https://openapi.programming-hero.com/api/news/${news_id}`;
+fetch(url)
+.then(res=>res.json())
+.then(data=>displayNewsDetails(data.data[0]))
+.catch(error=>console.log(error))
+}
 
+const displayNewsDetails=(news)=>{
+  console.log(news);
+ 
+
+}
 
 loadNewsCategories();
