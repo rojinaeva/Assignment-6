@@ -1,0 +1,14 @@
+.categories{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+.category{
+    padding:5px 10px;
+    gap:10px;
+    margin-right:10px;
+}
+.form-group{
+    margin-bottom:25px;
+}
+
