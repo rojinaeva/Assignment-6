@@ -19,6 +19,24 @@ const displayNewsCategories=(categories)=>{
     
   }); 
 }
+// loader section 
+const toggleSpinner=(isloading)=>{
+  const spinnerSection=document.getElementById('spinner-section');
+  if(isloading){
+    spinnerSection.classList.remove('d-none');
+  }
+  else{
+    spinnerSection.classList.add('d-none');
+  }
+}
+
+document.getElementById('categories-container').addEventListener('click',function(){
+  toggleSpinner(true);
+})
+
+
+
+
  const loadCertainCategories=(id)=>{
    const url=`https://openapi.programming-hero.com/api/news/category/${id}`;
    fetch(url)
@@ -85,7 +103,9 @@ const displayNewsCategories=(categories)=>{
     
     `
     newsContainer.appendChild(newsDiv);
+    toggleSpinner(false);
    }
+   
  }
 
 const loadNewsDetails=(news_id)=>{

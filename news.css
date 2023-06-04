@@ -1,3 +1,12 @@
+.heading-link{
+        color: #5D5FEF;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        text-decoration: none;
+}
+
+
 .categories{
     display: flex;
     flex-direction: row;
@@ -31,3 +40,14 @@
     justify-content: center;
 }
 
+
+/* blog html page styles */
+.blog{
+    background-color: aqua;
+   margin:50px 70px;
+   padding:15px 25px;
+   border-radius:10px;
+}
+.blog-para{
+    color:fuchsia;
+}
