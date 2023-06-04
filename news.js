@@ -73,10 +73,9 @@ const displayNewsCategories=(categories)=>{
           <div class="col">
           <div class="author-identity">
               <button onclick="loadNewsDetails('${cat._id
-              }')" type="button" class="btn btn-primary">Details
+              }')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal">Details
               </button> 
-        
-          </div>
+         </div>
           </div>
   </div>
        
@@ -99,6 +98,16 @@ fetch(url)
 
 const displayNewsDetails=(news)=>{
   console.log(news);
+  const newsModalLabel=document.getElementById('newsModalLabel');
+  newsModalLabel.innerText=news.title;
+  const modalDescription=document.getElementById('modal-description');
+  modalDescription.innerHTML=`
+  <h6>name of author : ${news.author.name}</h6>
+  <span>published of date : ${news.author.published_date} <span>
+  <img src="${news.author.img}" class="img-fluid rounded-circle ms-4" style="width:25%">
+  <p>description of news details : ${news.details}</p>
+  
+`
  
 
 }
