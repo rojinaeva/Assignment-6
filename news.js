@@ -47,16 +47,27 @@ document.getElementById('categories-container').addEventListener('click',functio
 
  const displayCertainCategories=(cate)=>{
    const newsContainer=document.getElementById('news-container');
+   newsContainer.textContent=``;
+   const itemsShow=document.getElementById('items-show');
+   if(cate.length>0){
+     itemsShow.innerText=cate.length+' items found for this categories';
+     itemsShow.classList.remove('d-none');
+   }
+   else{
+    itemsShow.innerText='0 item found for this categories';
+    itemsShow.classList.remove('d-none');
+   }
+  
    for(const cat of cate){
     console.log(cat);
     const newsDiv=document.createElement('div');
     newsDiv.classList.add('card');
     newsDiv.innerHTML=`
     <div class="row">
-     <div class="col-md-3" id="thumbnail-style">
+     <div class="col-md-3 col-sm-1" id="thumbnail-style">
      <img src="${cat.thumbnail_url}" class="img-fluid rounded-start" alt="">
    </div>
-   <div class="col-md-9">
+   <div class="col-md-9 col-sm-1">
      <div class="card-body">
        <h5 class="card-title">${cat.title}</h5>
        <div>
